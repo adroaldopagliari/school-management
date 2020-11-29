@@ -10,6 +10,15 @@ export class LessonService {
     @InjectRepository(Lesson) private lessonRepository: Repository<Lesson>,
   ) {}
 
+  async getLesson(id: string): Promise<Lesson> {
+    const lesson = await this.lessonRepository.findOne({ id });
+
+    if (!lesson) {
+    }
+
+    return lesson;
+  }
+
   async createLesson(
     name: string,
     startDate: string,
